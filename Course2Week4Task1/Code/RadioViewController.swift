@@ -24,8 +24,10 @@ class RadioViewController: UIViewController {
 
         setupItems()
         setupМolumeSliderConstraints()
-        
+        print(volumeSlider.frame.minY)
+        print(songLenth.frame.maxY)
     }
+    
     
 }
 
@@ -37,7 +39,10 @@ extension RadioViewController {
         
         songName = UILabel()
         songName.text = "JEAN MICHAEL JARRE - Oxygene"
+        songName.font = .systemFont(ofSize: 22, weight: .medium)
+        songName.textColor = .black
         songName.textAlignment = .center
+        songName.numberOfLines = 1
         songName.translatesAutoresizingMaskIntoConstraints = false
         
         volumeSlider = UISlider()
@@ -66,8 +71,7 @@ extension RadioViewController {
     
     func setupSongNameConstraints() {
         [songName.topAnchor.constraint(equalTo: songLenth.bottomAnchor),
-//         songName.heightAnchor.constraint(equalToConstant: volumeSlider.topAnchor.)
-//        songName.bottomAnchor.constraint(equalTo: volumeSlider.topAnchor),
+         songName.bottomAnchor.constraint(equalTo: volumeSlider.topAnchor),
         songName.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
         songName.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ]
