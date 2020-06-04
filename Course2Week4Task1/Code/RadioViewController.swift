@@ -13,9 +13,31 @@ class RadioViewController: UIViewController {
     private var regularConstraints: [NSLayoutConstraint] = []
     private var sharedConstraints: [NSLayoutConstraint] = []
 
-    var volumeSlider: UISlider!
-    var songLenth: UIProgressView!
-    var songName: UILabel!
+    var volumeSlider: UISlider = {
+        var volumeSlider = UISlider()
+        volumeSlider.value = 0.5
+        volumeSlider.translatesAutoresizingMaskIntoConstraints = false
+        return volumeSlider
+    }()
+
+    var songLenth: UIProgressView = {
+        var songLength = UIProgressView()
+        songLength.progress = 0.5
+        songLength.translatesAutoresizingMaskIntoConstraints = false
+        return songLength
+    }()
+
+    lazy var songName: UILabel = {
+        var label = UILabel()
+        label.text = "JM JARRE - Oxygene"
+        label.font = .systemFont(ofSize: 22, weight: .medium)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     lazy var albumImage: UIImageView = {
         var imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -34,22 +56,6 @@ class RadioViewController: UIViewController {
 extension RadioViewController {
 // MARK: - Setup Elements
     func setupElements() {
-        songLenth = UIProgressView()
-        songLenth.progress = 0.5
-        songLenth.translatesAutoresizingMaskIntoConstraints = false
-        
-        songName = UILabel()
-        songName.text = "JM JARRE - Oxygene"
-        songName.font = .systemFont(ofSize: 22, weight: .medium)
-        songName.textColor = .black
-        songName.textAlignment = .center
-        songName.numberOfLines = 1
-        songName.translatesAutoresizingMaskIntoConstraints = false
-        
-        volumeSlider = UISlider()
-        volumeSlider.value = 0.5
-        volumeSlider.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(albumImage)
         view.addSubview(songLenth)
         view.addSubview(volumeSlider)
